@@ -131,6 +131,30 @@ local plugins = {
     init = function()
       vim.g.vimtex_view_method = "zathura"
     end
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons", lazy = true },
+    },
+
+    keys = {
+      {
+        "dv",
+        function()
+          if next(require("diffview.lib").views) == nil then
+            vim.cmd("DiffviewOpen")
+          else
+            vim.cmd("DiffviewClose")
+          end
+        end,
+        desc = "Toggle Diffview window",
+      },
+    },
+  },
+  {
+    'christoomey/vim-tmux-navigator',
+    lazy = false,
   }
 }
 

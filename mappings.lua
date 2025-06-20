@@ -3,6 +3,12 @@ local M = {}
 
 M.general = {
   n = {
+    -- tmux navigation
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Window left" },
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Window down" },
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Window up" },
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Window right" },
+
     --  format with conform
     ["<leader>fm"] = {
       function()
