@@ -60,21 +60,6 @@ M.nvimtree = {
 	},
 }
 
-M.copilot = {
-	-- Possible configurable fields can be found on:
-	-- https://github.com/zbirenbaum/copilot.lua#setup-and-configuration
-	suggestion = {
-		enable = true,
-		auto_trigger = true,
-		keymap = {
-			accept = "<Tab>",
-		},
-	},
-	panel = {
-		enable = false,
-	},
-}
-
 -- cmp setup
 local cmp = require("cmp")
 

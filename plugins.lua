@@ -34,14 +34,6 @@ local plugins = {
 
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-          require("copilot_cmp").setup()
-        end,
-      },
-    },
     opts = overrides.cmp,
   },
 
@@ -71,36 +63,11 @@ local plugins = {
   },
 
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    opts = overrides.copilot,
-  },
-
-  {
     "kdheepak/lazygit.nvim",
     -- optional for floating window border decoration
     cmd = { "LazyGit", "LazyGitCurrentFile" },
     dependencies = {
       "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    cmd = {
-      "CopilotChatToggle",
-      "CoplitChatReset",
-      "CopilotChatFix",
-      "CopilotChatCommitStaged",
-      "CopilotChatFixDiagnostic",
-    },
-    branch = "canary",
-    dependencies = {
-      { "zbirenbaum/copilot.lua" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    opts = {
-      debug = true,
     },
   },
   {
