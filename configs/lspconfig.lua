@@ -1,20 +1,18 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require("lspconfig")
-
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "ts_ls", "clangd", "pyright", "ruff", "eslint", "astro", "svelte" }
+local servers = { "html", "cssls", "ts_ls", "clangd", "pyright", "ruff", "eslint", "astro", "svelte", "rust_analyzer" }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup({
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     capabilities = capabilities,
   })
 end
 
 -- disable semantic tokens
-lspconfig.ts_ls.setup({
+vim.lsp.config("ts_ls", {
   on_init = function(client, _)
     if
         not require("custom.chadrc").ui.lsp_semantic_tokens
@@ -25,10 +23,10 @@ lspconfig.ts_ls.setup({
   end,
 })
 
-lspconfig.rust_analyzer.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
+vim.lsp.config("rust_analyzer", {
   cmd = {
     "rustup", "run", "stable", "rust-analyzer"
   }
 })
+
+vim.lsp.enable(servers)
