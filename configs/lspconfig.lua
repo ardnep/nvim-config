@@ -16,7 +16,7 @@ vim.lsp.config("ts_ls", {
   on_init = function(client, _)
     if
         not require("custom.chadrc").ui.lsp_semantic_tokens
-        and client.supports_method("textDocument/semanticTokens")
+        and client:supports_method("textDocument/semanticTokens")
     then
       client.server_capabilities.semanticTokensProvider = nil
     end

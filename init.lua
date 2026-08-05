@@ -7,6 +7,14 @@
 -- })
 vim.opt.relativenumber = true
 
+-- nvim 0.11+ deprecated vim.lsp.with, but NvChad v2.0 (unmaintained) still calls it.
+-- Reimplement the old shim without the deprecation notice; remove after upgrading NvChad.
+vim.lsp.with = function(handler, override_config)
+  return function(err, result, ctx, config)
+    return handler(err, result, ctx, vim.tbl_deep_extend("force", config or {}, override_config))
+  end
+end
+
 local enable_providers = {
   "python3_provider",
   -- and so on
